@@ -75,7 +75,7 @@ jobs:
       run: |
         pwd
         cd cicd-gitops-eks/overlays/${{ env.ENV_NAME }}/ 
-        kustomize edit set image ${{ env.APP }}:${{ steps.extract_version_name.outputs.version }}
+        kustomize edit set image ${{ env.APP }}:${{ env.TAG }}
 
     # 수정된 kustomization.yaml 파일 commit push
     - name: Commit minifest files
