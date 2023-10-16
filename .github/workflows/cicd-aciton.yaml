@@ -52,8 +52,7 @@ jobs:
         context: .
         push: true
         tags: |
-          ${{env.ECR}}/tag:main
-          ${{env.ECR}}/tag:main-${{env.TAG}}
+          ${{env.ECR}}/pda-project:main-${{env.TAG}}
         cache-from: type=gha
         cache-to: type=gha,mode=max
         build-args: |
