@@ -9,9 +9,10 @@ on:
 # workflow 내에서 사용할 변수 값 저장
 env:
   AWS_REGION: ap-northeast-2                   
-  APP: "pda-project"
+  ECR_REPOSITORY_NAME: "pda-project"
   ENV_NAME: "prod"     
-  ECR_REPOSITORY: "686710509719.dkr.ecr.ap-northeast-2.amazonaws.com"      
+  ECR_REPOSITORY: "686710509719.dkr.ecr.ap-northeast-2.amazonaws.com"
+  APP: "client-app"      
 
 jobs:
   deploy:
@@ -50,7 +51,7 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64
         push: true
-        tags: ${{ env.ECR_REPOSITORY }}/${{ env.APP }}:${{ steps.extract_version_name.outputs.version }}
+        tags: ${{ env.ECR_REPOSITORY }}/${{ env.ECR_REPOSITORY_NAME }}:${{ steps.extract_version_name.outputs.version }}
     
     - name: Checkout for Kustomize repository
       uses: actions/checkout@v2
