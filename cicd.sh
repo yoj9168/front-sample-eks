@@ -34,7 +34,6 @@ aws eks --region ${AWS_REGION} update-kubeconfig --name ${CLUSTER} --profile ${A
 echo "aws ecr login .."
 # ==================
 env | grep AWS
-cp "./env/alpha" .env
 aws ecr get-login-password --region  ${AWS_REGION} | docker login --username AWS --password-stdin 686710509719.dkr.ecr.ap-northeast-2.amazonaws.com
 
 # ==================
